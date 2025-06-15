@@ -44,8 +44,7 @@ body {
   }
   
   .left-column img {
-    width: 100%;
-    height: auto;
+    /* The image size is now controlled by the HTML height and width attributes below */
     border-radius: 8px;
     margin-bottom: 20px;
   }
@@ -77,18 +76,24 @@ body {
     background-color: #002244;
   }
   
+  .right-column {
+    display: flex;
+    justify-content: flex-end; /* Push content to the right */
+    align-items: flex-start;
+  }
+  
+  /* Yellow frame around the image */
   .right-column .photo-frame {
-    border: 8px solid #ffc907;
+    border: 8px solid #ffc907; /* Yellow border */
     border-radius: 6px;
     overflow: hidden;
     width: 100%;
     max-width: 400px;
-    margin: 0 auto;
+    margin-right: 0; /* No extra margin on the right */
   }
   
   .right-column img {
-    width: 100%;
-    height: auto;
+    /* The image size is now controlled by the HTML height and width attributes below */
     display: block;
   }
   
@@ -112,3 +117,42 @@ body {
     }
   }
   
+  /* Responsive styles for phones and small devices */
+  @media (max-width: 600px) {
+    .content {
+      flex-direction: column; /* Stack columns vertically */
+      gap: 20px;
+      align-items: stretch;
+    }
+    .left-column, .right-column {
+      min-width: 0;
+      width: 100%;
+    }
+    .left-column img, .right-column img {
+      max-width: 100%; /* Make images fit the screen */
+      height: auto;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .left-column h1 {
+      font-size: 1.5rem;
+    }
+    .cta-button {
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 1rem;
+      padding: 10px 0;
+    }
+    .right-column {
+      justify-content: center; /* Center the image on small screens */
+    }
+    .right-column .photo-frame {
+      max-width: 100%;
+    }
+    nav a {
+      display: block;
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+  }
